@@ -1,6 +1,5 @@
 package fr.craftinglabs.prez.unittest;
 
-
 public class Frame
 {
     private static final int MAX_ROLLS = 2;
@@ -11,29 +10,24 @@ public class Frame
 
     private Frame nextFrame;
 
-    public Frame()
-    {
+    public Frame() {
         init();
     }
 
-    private void init()
-    {
+    private void init() {
         rolls = new int[maxRolls()];
     }
 
-    public void setNextFrame(Frame nextFrame)
-    {
+    public void setNextFrame(Frame nextFrame) {
         this.nextFrame = nextFrame;
     }
 
-    public void roll(int pins)
-    {
+    public void roll(int pins) {
         rolls[currentRoll] = pins;
         currentRoll++;
     }
 
-    public int scoreWithBouns()
-    {
+    public int scoreWithBouns() {
         if (isStrike())
             return firstRoll() + nextFrame.strikeBonusForPreviousFrame();
         else if (isSpare())
@@ -42,61 +36,50 @@ public class Frame
             return frameTotal();
     }
 
-    int strikeBonusForPreviousFrame()
-    {
+    int strikeBonusForPreviousFrame() {
         if (isStrike())
             return firstRoll() + nextFrame.firstRoll();
         else
             return frameTotal();
     }
 
-    private int frameTotal()
-    {
+    private int frameTotal() {
         return firstRoll() + secondRoll();
     }
 
-    int spareBonusForPreviousFrame()
-    {
+    int spareBonusForPreviousFrame() {
         return firstRoll();
     }
 
-    protected int firstRoll()
-    {
+    protected int firstRoll() {
         return rolls[0];
     }
 
-    protected int secondRoll()
-    {
+    protected int secondRoll() {
         return rolls[1];
     }
 
-    public boolean isOver()
-    {
+    public boolean isOver() {
         return isStrike() || allRollsHaveBeenMade();
     }
 
-    protected boolean allRollsHaveBeenMade()
-    {
+    protected boolean allRollsHaveBeenMade() {
         return currentRoll == maxRolls();
     }
 
-    protected boolean twoRollsHaveBeenMade()
-    {
+    protected boolean twoRollsHaveBeenMade() {
         return currentRoll == 2;
     }
 
-    protected int maxRolls()
-    {
+    protected int maxRolls() {
         return MAX_ROLLS;
     }
 
-    public boolean isSpare()
-    {
+    public boolean isSpare() {
         return frameTotal() == BONUS_WORTHY_SCORE;
     }
 
-    public boolean isStrike()
-    {
+    public boolean isStrike() {
         return firstRoll() == BONUS_WORTHY_SCORE;
     }
 }

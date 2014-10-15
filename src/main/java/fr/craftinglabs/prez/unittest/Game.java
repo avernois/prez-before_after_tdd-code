@@ -1,6 +1,5 @@
 package fr.craftinglabs.prez.unittest;
 
-
 public class Game
 {
     private static final int NUM_FRAMES = 10;
@@ -9,13 +8,11 @@ public class Game
     private final Frame[] frames = new Frame[NUM_FRAMES];
     private int currentFrame;
 
-    public Game()
-    {
+    public Game() {
         initFrames();
     }
 
-    private void initFrames()
-    {
+    private void initFrames() {
         for (int i = 0; i < LAST_FRAME; i++)
             frames[i] = new Frame();
 
@@ -25,29 +22,26 @@ public class Game
             frames[i].setNextFrame(frames[i + 1]);
     }
 
-    public void roll(int pins)
-    {
+    public void roll(int pins) {
         currentFrame().roll(pins);
 
         if (currentFrame().isOver())
             moveToNextFrame();
     }
 
-    private int moveToNextFrame()
-    {
+    private int moveToNextFrame() {
         return currentFrame++;
     }
 
-    private Frame currentFrame()
-    {
+    private Frame currentFrame() {
         return frames[currentFrame];
     }
 
-    public int score()
-    {
+    public int score() {
         int score = 0;
         for (Frame frame : frames)
             score += frame.scoreWithBouns();
+
         return score;
     }
 }
