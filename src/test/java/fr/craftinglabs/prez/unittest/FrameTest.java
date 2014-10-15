@@ -134,7 +134,7 @@ public class FrameTest
     {
         frame.roll(10);
 
-        assertFalse(frame.isSpare());
+        assertTrue(frame.isSpare());
     }
 
     @Test
