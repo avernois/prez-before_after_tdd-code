@@ -4,4 +4,13 @@
   <artifactId>unittest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>ta_tb_tdd</name>
+  
+  <dependencies>    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>
