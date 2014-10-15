@@ -92,7 +92,7 @@ public class Frame
 
     public boolean isSpare()
     {
-        return !isStrike() && frameTotal() == BONUS_WORTHY_SCORE;
+        return frameTotal() == BONUS_WORTHY_SCORE;
     }
 
     public boolean isStrike()
