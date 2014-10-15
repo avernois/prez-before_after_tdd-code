@@ -12,34 +12,28 @@ public class LastFrameTest
     private LastFrame lastFrame;
 
     @Before
-    public void setup()
-    {
+    public void setup() {
         lastFrame = new LastFrame();
     }
 
-    private void rollStrike()
-    {
+    private void rollStrike() {
         lastFrame.roll(10);
     }
 
-    private void rollSpare(int pins)
-    {
+    private void rollSpare(int pins) {
         lastFrame.roll(pins);
         lastFrame.roll(10 - pins);
     }
 
-
     @Test
-    public void lastFrameIsNotOverWithOneStrike()
-    {
+    public void lastFrameIsNotOverWithOneStrike() {
         rollStrike();
 
         assertFalse(lastFrame.isOver());
     }
 
     @Test
-    public void lastFrameIsNotOverWithOneStrikeAndOneMoreRoll()
-    {
+    public void lastFrameIsNotOverWithOneStrikeAndOneMoreRoll() {
         rollStrike();
         lastFrame.roll(5);
 
@@ -47,8 +41,7 @@ public class LastFrameTest
     }
 
     @Test
-    public void lastFrameIsOverWithOneStrikeAndTwoMoreRolls()
-    {
+    public void lastFrameIsOverWithOneStrikeAndTwoMoreRolls() {
         rollStrike();
         lastFrame.roll(5);
         lastFrame.roll(3);
@@ -57,16 +50,14 @@ public class LastFrameTest
     }
 
     @Test
-    public void lastFrameIsNotOverWithOneRoll()
-    {
+    public void lastFrameIsNotOverWithOneRoll() {
         lastFrame.roll(3);
 
         assertFalse(lastFrame.isOver());
     }
 
     @Test
-    public void lastFrameIsOverWithTwoRollsAndPinsLeft()
-    {
+    public void lastFrameIsOverWithTwoRollsAndPinsLeft() {
         lastFrame.roll(3);
         lastFrame.roll(5);
 
@@ -74,8 +65,7 @@ public class LastFrameTest
     }
 
     @Test
-    public void scoreOfOrdinaryLastFrameIsTotalOfPinsInTwoRolls()
-    {
+    public void scoreOfOrdinaryLastFrameIsTotalOfPinsInTwoRolls() {
         lastFrame.roll(2);
         lastFrame.roll(6);
 
@@ -83,8 +73,7 @@ public class LastFrameTest
     }
 
     @Test
-    public void scoreOfSpareLastFrameIsTotalOfPinsInThreeRolls()
-    {
+    public void scoreOfSpareLastFrameIsTotalOfPinsInThreeRolls() {
         rollSpare(4);
         lastFrame.roll(2);
 
@@ -92,8 +81,7 @@ public class LastFrameTest
     }
 
     @Test
-    public void scoreOfStrikeLastFrameIsTotalOfPinsInThreeRolls()
-    {
+    public void scoreOfStrikeLastFrameIsTotalOfPinsInThreeRolls() {
         rollStrike();
         lastFrame.roll(6);
         lastFrame.roll(2);
@@ -102,8 +90,7 @@ public class LastFrameTest
     }
 
     @Test
-    public void strikeBonusForPreviousFrameIsTotalOfFirstTwoRolls()
-    {
+    public void strikeBonusForPreviousFrameIsTotalOfFirstTwoRolls() {
         lastFrame.roll(6);
         lastFrame.roll(2);
 
@@ -111,8 +98,7 @@ public class LastFrameTest
     }
 
     @Test
-    public void strikeBonusForPreviousFrameIsTotalOfFirstTwoRollsWhenLastFrameStartsWithAStrike()
-    {
+    public void strikeBonusForPreviousFrameIsTotalOfFirstTwoRollsWhenLastFrameStartsWithAStrike() {
         rollStrike();
         lastFrame.roll(2);
 
