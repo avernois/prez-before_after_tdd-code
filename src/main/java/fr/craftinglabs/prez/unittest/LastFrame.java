@@ -8,8 +8,7 @@ public class LastFrame extends Frame
     public boolean isOver()
     {
         return isStrike() && allRollsHaveBeenMade() ||
-                isSpare() && allRollsHaveBeenMade() ||
-                !isStrike() && !isSpare() && twoRollsHaveBeenMade();
+                !isStrike() && twoRollsHaveBeenMade();
     }
 
     @Override
